@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  app:
+    container_name: rss-monitor
+    image: node:20-alpine
+    restart: always
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+    environment:
+      - NODE_ENV=production
+    entrypoint: [ "sh", "-c", "npm ci && node main.js" ]
